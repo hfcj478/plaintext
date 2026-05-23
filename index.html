@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocGenius - 技术文档自动生成与更新系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#1e1b4b',
+                        light: '#f5f3ff'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .gradient-bg {
+                background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fa fa-file-text-o text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">DocGenius</span>
+                    </div>
+                    <div class="hidden md:block ml-10">
+                        <div class="flex items-baseline space-x-4">
+                            <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">首页</a>
+                            <a href="#features" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">功能</a>
+                            <a href="#how-it-works" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">工作原理</a>
+                            <a href="#pricing" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">定价</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="dashboard.html" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                        进入控制台
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                告别手动编写文档的烦恼
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                DocGenius 自动分析您的代码库，生成高质量技术文档，并在代码变更时实时更新
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="dashboard.html" class="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition duration-300">
+                    免费开始使用
+                </a>
+                <a href="#how-it-works" class="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg text-lg font-semibold transition duration-300">
+                    了解工作原理
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特性 -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">强大的功能特性</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    利用先进的AI技术，为您提供全方位的技术文档自动化解决方案
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 功能卡片1 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-github text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">一键连接代码仓库</h3>
+                    <p class="text-gray-600">
+                        支持GitHub、GitLab、Gitee等主流代码托管平台，一键导入您的项目
+                    </p>
+                </div>
+
+                <!-- 功能卡片2 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-code text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">智能代码分析</h3>
+                    <p class="text-gray-600">
+                        深度分析代码结构、函数接口、参数类型和依赖关系，提取关键信息
+                    </p>
+                </div>
+
+                <!-- 功能卡片3 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-file-text text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">多类型文档生成</h3>
+                    <p class="text-gray-600">
+                        自动生成API文档、架构设计、部署指南、使用示例和更新日志
+                    </p>
+                </div>
+
+                <!-- 功能卡片4 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-refresh text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">实时自动更新</h3>
+                    <p class="text-gray-600">
+                        监控代码仓库变更，自动检测需要更新的文档部分，实现增量更新
+                    </p>
+                </div>
+
+                <!-- 功能卡片5 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-download text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">多格式导出</h3>
+                    <p class="text-gray-600">
+                        支持Markdown、HTML、PDF、Word等多种格式的文档导出
+                    </p>
+                </div>
+
+                <!-- 功能卡片6 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-globe text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">多语言支持</h3>
+                    <p class="text-gray-600">
+                        自动生成中英文双语文档，并保持技术术语的准确性和一致性
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作原理 -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">工作原理</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    多Agent协作模式，实现从代码到文档的全流程自动化
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- 时间线 -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20"></div>
+
+                <!-- 步骤1 -->
+                <div class="flex flex-col md:flex-row items-center mb-16">
+                    <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 text-right">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">1. 连接代码仓库</h3>
+                        <p class="text-gray-600">
+                            授权DocGenius访问您的代码仓库，系统会自动克隆代码并进行初始化分析
+                        </p>
+                    </div>
+                    <div class="md:w-12 flex justify-center">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold z-10">1</div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <img src="https://picsum.photos/id/0/600/400" alt="连接代码仓库" class="rounded-lg shadow-lg w-full">
+                    </div>
+                </div>
+
+                <!-- 步骤2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center mb-16">
+                    <div class="md:w-1/2 md:pl-12 mb-8 md:mb-0 text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">2. 深度代码分析</h3>
+                        <p class="text-gray-600">
+                            利用大模型的长上下文能力，分析代码结构、函数接口、依赖关系和业务逻辑
+                        </p>
+                    </div>
+                    <div class="md:w-12 flex justify-center">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold z-10">2</div>
+                    </div>
+                    <div class="md:w-1/2 md:pr-12">
+                        <img src="https://picsum.photos/id/180/600/400" alt="深度代码分析" class="rounded-lg shadow-lg w-full">
+                    </div>
+                </div>
+
+                <!-- 步骤3 -->
+                <div class="flex flex-col md:flex-row items-center mb-16">
+                    <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 text-right">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">3. 多Agent协作生成文档</h3>
+                        <p class="text-gray-600">
+                            多个专业Agent分工协作，分别生成不同类型的文档，并进行交叉验证
+                        </p>
+                    </div>
+                    <div class="md:w-12 flex justify-center">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold z-10">3</div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <img src="https://picsum.photos/id/160/600/400" alt="多Agent协作" class="rounded-lg shadow-lg w-full">
+                    </div>
+                </div>
+
+                <!-- 步骤4 -->
+                <div class="flex flex-col md:flex-row-reverse items-center">
+                    <div class="md:w-1/2 md:pl-12 mb-8 md:mb-0 text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">4. 实时监控与更新</h3>
+                        <p class="text-gray-600">
+                            持续监控代码仓库变更，当检测到代码修改时，自动更新相关文档
+                        </p>
+                    </div>
+                    <div class="md:w-12 flex justify-center">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold z-10">4</div>
+                    </div>
+                    <div class="md:w-1/2 md:pr-12">
+                        <img src="https://picsum.photos/id/119/600/400" alt="实时监控与更新" class="rounded-lg shadow-lg w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计数据 -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">95%</div>
+                    <p class="text-lg">文档编写时间减少</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">100%</div>
+                    <p class="text-lg">文档覆盖率提升</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">5分钟</div>
+                    <p class="text-lg">文档更新延迟</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">76%</div>
+                    <p class="text-lg">文档相关问题减少</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <i class="fa fa-file-text-o text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">DocGenius</span>
+                    </div>
+                    <p class="text-gray-400 max-w-md">
+                        技术文档自动生成与更新系统，让您专注于代码，文档交给我们
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">产品</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white">功能特性</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">定价方案</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">更新日志</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">资源</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white">文档中心</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">API参考</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">公司</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white">关于我们</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 DocGenius. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
